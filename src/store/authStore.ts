@@ -55,7 +55,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
 connectSocket: (userId: string) => {
   const existing = get().socket;
-  if (existing) return; // ❗ prevent multiple socket connections
+  if (existing) return; 
 
   const socket = io(BASE_URL, { query: { userId } });
   socket.connect();
@@ -83,7 +83,7 @@ checkAuth: async () => {
     set({ user });
 
     get().connectSocket(user._id);
-    console.log("hooooooooooo"); // ✅ reconnect socket on refresh
+    console.log("hooooooooooo"); 
   } catch (err) {
     set({ user: null, token: null });
     localStorage.removeItem('token');
