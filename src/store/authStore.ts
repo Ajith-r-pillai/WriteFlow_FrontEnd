@@ -16,7 +16,7 @@ interface AuthState {
   logout: () => void;
   connectSocket: (userId: string) => void; 
   checkAuth: () => Promise<void>;
-// ✅ added this
+
 }
 
 export const useAuthStore = create<AuthState>((set, get) => ({
@@ -29,7 +29,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     const { user, token } = res.data;
     localStorage.setItem('token', token);
     set({ user, token });
-    get().connectSocket(user._id); // ✅ now it's typed correctly
+    get().connectSocket(user._id); 
     toast.success('Login successful');
     // console.log(user);
     
@@ -55,7 +55,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
 connectSocket: (userId: string) => {
   const existing = get().socket;
-  if (existing) return; 
+  if (existing) return;
 
   const socket = io(BASE_URL, { query: { userId } });
   socket.connect();
@@ -64,31 +64,23 @@ connectSocket: (userId: string) => {
 ,
 
 checkAuth: async () => {
-    console.log("heyy");
-    
   const token = get().token;
   if (!token) {
     set({ user: null, token: null });
-      console.log("!token");
     return;
   }
 
   try {
-    const res = await axiosInstance.get('/auth/check', {
-      headers: {
-        Authorization:` Bearer ${token}`,
-      },
-    });
+    const res = await axiosInstance.get('/auth/check'); // ✅ No manual headers
     const user = res.data;
     set({ user });
-
     get().connectSocket(user._id);
-    console.log("hooooooooooo"); 
   } catch (err) {
     set({ user: null, token: null });
     localStorage.removeItem('token');
   }
 },
+
 
 
 }));
