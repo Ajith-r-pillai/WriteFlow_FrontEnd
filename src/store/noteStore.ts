@@ -17,7 +17,7 @@ interface NoteStore {
   leaveNote: (noteId: string) => Promise<void>;
 }
 
-export const useNoteStore = create<NoteStore>((set, get) => ({
+export const useNoteStore = create<NoteStore>((set) => ({
   notes: [],
 
   getAllNotes: async () => {
