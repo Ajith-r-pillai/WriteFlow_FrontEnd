@@ -71,7 +71,7 @@ checkAuth: async () => {
   }
 
   try {
-    const res = await axiosInstance.get('/auth/check'); // ✅ No manual headers
+    const res = await axiosInstance.get('/auth/check'); 
     const user = res.data;
     set({ user });
     get().connectSocket(user._id);

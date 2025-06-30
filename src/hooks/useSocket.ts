@@ -14,8 +14,7 @@ export const useSocket = (
   const socketRef = useRef<Socket | null>(null);
 
   const BASE_URL = import.meta.env.VITE_API_SOCKET_BASE_URL;
-  console.log('✅ BASE_URL used in socket:', BASE_URL);
-console.log('🌍 ENV:', import.meta.env);
+
 
   useEffect(() => {
     if (!noteId || !user) return;

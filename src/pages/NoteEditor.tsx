@@ -123,7 +123,7 @@ export default function NoteEditor() {
       } else {
         await updateNote(noteId, { title, content });
         socket?.emit('noteUpdated', { noteId, data: { title, content } });
-        toast.success('Note updated');
+      
       }
     } catch {
       toast.error('Failed to save');

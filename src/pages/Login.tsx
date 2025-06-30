@@ -6,13 +6,11 @@ import { useAuthStore } from '../store/authStore';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, LogIn } from 'lucide-react';
 
-// ✅ Zod Schema
 const loginSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
 });
 
-// ✅ Infer TypeScript type from schema
 type LoginForm = z.infer<typeof loginSchema>;
 
 export default function Login() {
@@ -38,7 +36,7 @@ export default function Login() {
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-amber-100/50 p-8 space-y-6">
           <div className="text-center space-y-2">
             <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <LogIn className="w-8 h-8 text-white" />
+              <LogIn className="w-8 h-8 text-white" style={{ display: 'block' }} />
             </div>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
               Welcome Back
@@ -50,7 +48,7 @@ export default function Login() {
             <div className="space-y-4">
               {/* Email */}
               <div className="relative group">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400 group-focus-within:text-amber-600 transition-colors" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400 group-focus-within:text-amber-600 transition-colors" style={{ display: 'block', zIndex: 10 }} />
                 <input
                   {...register('email')}
                   placeholder="Email"
@@ -63,7 +61,7 @@ export default function Login() {
 
               {/* Password */}
               <div className="relative group">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400 group-focus-within:text-amber-600 transition-colors" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400 group-focus-within:text-amber-600 transition-colors" style={{ display: 'block', zIndex: 10 }} />
                 <input
                   {...register('password')}
                   type="password"
@@ -89,7 +87,7 @@ export default function Login() {
               to="/register"
               className="text-amber-600 hover:text-amber-700 font-medium hover:underline transition-colors"
             >
-              Don’t have an account? Create one
+              Don't have an account? Create one
             </Link>
           </div>
         </div>

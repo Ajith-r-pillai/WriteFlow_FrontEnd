@@ -6,7 +6,7 @@ import { useAuthStore } from '../store/authStore';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, Mail, Phone, Lock, UserPlus } from 'lucide-react';
 
-// ✅ Zod schema
+
 const schema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
   email: z.string().email({ message: 'Enter a valid email' }),
@@ -37,7 +37,7 @@ export default function Register() {
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-amber-100/50 p-8 space-y-6">
           <div className="text-center space-y-2">
             <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <UserPlus className="w-8 h-8 text-white" />
+              <UserPlus className="w-8 h-8 text-white" style={{ display: 'block' }} />
             </div>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
               Create Account
@@ -49,7 +49,7 @@ export default function Register() {
             <div className="space-y-4">
               {/* Name */}
               <div className="relative group">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400" />
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400" style={{ display: 'block', zIndex: 10 }} />
                 <input
                   {...register('name')}
                   placeholder="Name"
@@ -60,7 +60,7 @@ export default function Register() {
 
               {/* Email */}
               <div className="relative group">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400" style={{ display: 'block', zIndex: 10 }} />
                 <input
                   {...register('email')}
                   placeholder="Email"
@@ -71,7 +71,7 @@ export default function Register() {
 
               {/* Phone */}
               <div className="relative group">
-                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400" />
+                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400" style={{ display: 'block', zIndex: 10 }} />
                 <input
                   {...register('phone')}
                   placeholder="Phone"
@@ -82,7 +82,7 @@ export default function Register() {
 
               {/* Password */}
               <div className="relative group">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400" style={{ display: 'block', zIndex: 10 }} />
                 <input
                   {...register('password')}
                   type="password"
@@ -105,7 +105,7 @@ export default function Register() {
             <p className="text-amber-700">
               Already have an account?{' '}
               <Link
-                to="/login"
+                to="/"
                 className="text-amber-600 hover:text-amber-700 font-medium hover:underline transition-colors"
               >
                 Sign in
